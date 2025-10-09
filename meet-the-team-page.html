@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Team | Fire Robotics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ccc;
+            background: #000;
+        }
+
+        header {
+            background: #000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #ccc;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border-radius: 15px;
+            margin-bottom: 4rem;
+            overflow: hidden;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .person-card {
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .person-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .person-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .person-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .person-content {
+            padding: 1.5rem;
+        }
+
+        .person-content h3 {
+            color: #ff6b35;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .person-content p {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .organizations-section {
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .org-card {
+            background: #111;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .org-card:hover {
+            transform: scale(1.05);
+        }
+
+        .org-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .org-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+
+        .org-card h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .org-card p {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .people-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="images/logo.avif" alt="Fire Robotics Logo">
+                </div>
+                <div class="site-title">Fire Robotics</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="team-structure.html">Team Structure</a></li>
+                <li><a href="meet-the-team.html">Meet the Team</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media-hub.html">Media Hub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Meet the Leadership</h1>
+        <p>Fire Robotics | Team #16953</p>
+    </section>
+
+    <section>
+        <div class="team-photo">
+            <img src="images/team-leadership.avif" alt="Team Leadership Photo">
+        </div>
+
+        <h2 class="section-title">Our Coaches</h2>
+        <div class="people-grid">
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/coach-degraw.avif" alt="Danielle DeGraw">
+                </div>
+                <div class="person-content">
+                    <h3>Danielle DeGraw</h3>
+                    <p>Livingston Elementary Schools Technology Teacher</p>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/coach-snyder.avif" alt="Ray Snyder">
+                </div>
+                <div class="person-content">
+                    <h3>Ray Snyder</h3>
+                    <p>High School Business Teacher</p>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/coach-novotny.avif" alt="James Novotny">
+                </div>
+                <div class="person-content">
+                    <h3>James Novotny</h3>
+                    <p>Professor at Kean University</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 5rem;">Our Mentors</h2>
+        <div class="people-grid">
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/mentor-agrawal.avif" alt="Astha Agrawal">
+                </div>
+                <div class="person-content">
+                    <h3>Astha Agrawal</h3>
+                    <p>Financial Advisor at Merrill Lynch</p>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/mentor-klonsky.avif" alt="Jacob Klonsky">
+                </div>
+                <div class="person-content">
+                    <h3>Jacob Klonsky</h3>
+                    <p>SAP Consultant at Capgemini NYC</p>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/mentor-wade-taylor.avif" alt="Taylor Wade">
+                </div>
+                <div class="person-content">
+                    <h3>Taylor Wade</h3>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/mentor-wade-claude.avif" alt="Claude Wade">
+                </div>
+                <div class="person-content">
+                    <h3>Claude Wade</h3>
+                    <p>Client Engagement Manager at Mphasis Wyde</p>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/mentor-jain.avif" alt="Anurag Jain">
+                </div>
+                <div class="person-content">
+                    <h3>Anurag Jain</h3>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/mentor-kim.avif" alt="Yoomi Kim">
+                </div>
+                <div class="person-content">
+                    <h3>Yoomi Kim</h3>
+                    <p>Architect at Dimovski Architecture</p>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/mentor-bansal.avif" alt="Shourya Bansal">
+                </div>
+                <div class="person-content">
+                    <h3>Shourya Bansal</h3>
+                    <p>Computer Science major at University of Michigan</p>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/mentor-tsymbal.avif" alt="Brian Tsymbal">
+                </div>
+                <div class="person-content">
+                    <h3>Brian Tsymbal</h3>
+                    <p>Mechanical Engineering major at Drexel University</p>
+                </div>
+            </div>
+
+            <div class="person-card">
+                <div class="person-image">
+                    <img src="images/mentor-mintz.avif" alt="Alex Mintz">
+                </div>
+                <div class="person-content">
+                    <h3>Alex Mintz</h3>
+                    <p>Interactive Media and Game Development major at Worcester Polytechnic Institute</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="organizations-section">
+        <h2 class="section-title">Affiliated Organizations</h2>
+        <div class="org-grid">
+            <div class="org-card">
+                <div class="org-logo">
+                    <img src="images/org-lancers.avif" alt="Lancers Robotics Logo">
+                </div>
+                <h3>Lancers Robotics</h3>
+                <p>Team #3415</p>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">
+                    <img src="images/org-ltv.avif" alt="LTV Logo">
+                </div>
+                <h3>LTV</h3>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">
+                    <img src="images/org-emerald.avif" alt="Emerald Knights Logo">
+                </div>
+                <h3>Emerald Knights</h3>
+                <p>Team #10582</p>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">
+                    <img src="images/org-first.avif" alt="FIRST Logo">
+                </div>
+                <h3>FIRST</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Fire Robotics - Livingston High School</p>
+        <div class="footer-links">
+            <a href="https://www.youtube.com/@FireRobotics" target="_blank">YouTube</a>
+            <a href="https://www.instagram.com/fire_robotics/?hl=en" target="_blank">Instagram</a>
+            <a href="https://www.tiktok.com/@fire_robotics" target="_blank">TikTok</a>
+        </div>
+    </footer>
+</body>
+</html>

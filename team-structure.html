@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Structure | Fire Robotics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ccc;
+            background: #000;
+        }
+
+        header {
+            background: #000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .subteams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .subteam-card {
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+
+        .subteam-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .subteam-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .subteam-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .subteam-content {
+            padding: 2rem;
+        }
+
+        .subteam-content h3 {
+            color: #ff6b35;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .subteam-content p {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .process-section {
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        .process-section h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-card {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .process-card:hover {
+            transform: scale(1.05);
+        }
+
+        .process-card h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-transform: capitalize;
+        }
+
+        .process-card p {
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .subteams-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="images/logo.avif" alt="Fire Robotics Logo">
+            </div>
+            <div class="site-title">Fire Robotics</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="team-structure.html">Team Structure</a></li>
+            <li><a href="meet-the-team.html">Meet the Team</a></li>
+            <li><a href="awards.html">Awards</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="media-hub.html">Media Hub</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Team Structure</h1>
+</section>
+
+<section class="intro-section">
+    <p>
+        The team is managed by 2 Co-Captains and 6 subteam leaders. Co-Captains are picked by the previous year's
+        Co-Captains and they rotate annually. New Co-Captains are informed of their positions at the season's end
+        so they can begin planning for the next. They are responsible for making timelines to give to subteam captains
+        and ensuring that everything is completed efficiently. The team uses an industry-standard multidivisional
+        management structure to ensure the smooth running of the team, even in the absence of several key members.
+    </p>
+</section>
+
+<section>
+    <div class="subteams-grid">
+        <div class="subteam-card">
+            <div class="subteam-image">
+                <img src="images/cad-team.avif" alt="CAD Team">
+            </div>
+            <div class="subteam-content">
+                <h3>CAD</h3>
+                <p>
+                    CAD stands for Computer-Aided Design. Our CAD team makes the initial designs to help create a
+                    blueprint of the robot using Fusion 360. Additionally, many of our designs are 3D printed in
+                    order to be incorporated into our real-life robot.
+                </p>
+            </div>
+        </div>
+
+        <div class="subteam-card">
+            <div class="subteam-image">
+                <img src="images/code-team.avif" alt="Code Team">
+            </div>
+            <div class="subteam-content">
+                <h3>Code</h3>
+                <p>
+                    The role of the code team is to implement the functionality and control of the robot once it is
+                    built. Using the coding language Java, the sub-team works to allow a user to control a robot with
+                    a controller. In addition, we code the robot to independently move and make decisions without human input.
+                </p>
+            </div>
+        </div>
+
+        <div class="subteam-card">
+            <div class="subteam-image">
+                <img src="images/build-team.avif" alt="Build Team">
+            </div>
+            <div class="subteam-content">
+                <h3>Build</h3>
+                <p>
+                    The Build team constructs the robot based on robot iterations made by the CAD team and design-oriented
+                    discussions with the rest of the team. They are responsible for building an efficient and innovative
+                    robot that can effectively complete the goal of the FTC game.
+                </p>
+            </div>
+        </div>
+
+        <div class="subteam-card">
+            <div class="subteam-image">
+                <img src="images/logbook-team.avif" alt="Logbook Team">
+            </div>
+            <div class="subteam-content">
+                <h3>Logbook</h3>
+                <p>
+                    The Logbook team documents all of the team's events and meetings in order to compile the required
+                    documentation into a clear and concise document called an Engineering Notebook or Engineering Portfolio.
+                    The team then submits this document for judges to evaluate our performance prior to any competition.
+                </p>
+            </div>
+        </div>
+
+        <div class="subteam-card">
+            <div class="subteam-image">
+                <img src="images/finance-team.avif" alt="Finance Team">
+            </div>
+            <div class="subteam-content">
+                <h3>Finance</h3>
+                <p>
+                    The Finance team is responsible for keeping track of all pecuniary aspects of the team. They are in
+                    charge of fundraising and budgeting. By obtaining sponsorships and using other fundraising methods,
+                    they collect money for the team. They then budget it across all subteams. Additionally, General Finance
+                    helps our sister teams with their finances.
+                </p>
+            </div>
+        </div>
+
+        <div class="subteam-card">
+            <div class="subteam-image">
+                <img src="images/outreach-team.avif" alt="Outreach Team">
+            </div>
+            <div class="subteam-content">
+                <h3>Outreach</h3>
+                <p>
+                    The outreach team oversees all the events hosted on behalf of the robotics team. They plan and set
+                    up events for various purposes. Such as philanthropic activities, fundraising for charities, and
+                    spreading awareness of the importance of S.T.E.M. in youth.
+                </p>
+            </div>
+        </div>
+
+        <div class="subteam-card">
+            <div class="subteam-image">
+                <img src="images/media-team.avif" alt="Media Team">
+            </div>
+            <div class="subteam-content">
+                <h3>Media</h3>
+                <p>
+                    The role of the media is to promote the team's achievements and events. They manage the team's Youtube,
+                    Instagram, TikTok, and even this website. They direct and produce a TV show called S.T.E.M. Talk,
+                    which talks about different aspects of S.T.E.M. in our community.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="process-section">
+    <h2>Our Process</h2>
+    <div class="process-grid">
+        <div class="process-card">
+            <h3>Brainstorm</h3>
+            <p>Determining parameters and developing a general design.</p>
+        </div>
+        <div class="process-card">
+            <h3>Design</h3>
+            <p>Designing the full robot in CAD before fabrication as well as developing custom elements.</p>
+        </div>
+        <div class="process-card">
+            <h3>Build</h3>
+            <p>Fabricating elements and assembling a cohesive competitive robot.</p>
+        </div>
+        <div class="process-card">
+            <h3>Test</h3>
+            <p>Testing each iteration of the robot and fixing any issues.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Fire Robotics - Livingston High School</p>
+    <div class="footer-links">
+        <a href="https://youtube.com/@FireRobotics" target="_blank">YouTube</a>
+        <a href="https://www.instagram.com/fire_robotics/?hl=en" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@fire_robotics" target="_blank">TikTok</a>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

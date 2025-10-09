@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awards | Fire Robotics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ccc;
+            background: #000;
+        }
+
+        header {
+            background: #000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #ff6b35 0%, #f7931e 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: #111;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: #ff6b35;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px #000, 0 0 0 6px #ff6b35;
+        }
+
+        .year-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .award-title {
+            color: #ff6b35;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .award-description {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 60px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="images/logo.avif" alt="Fire Robotics Logo">
+                </div>
+                <div class="site-title">Fire Robotics</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="team-structure.html">Team Structure</a></li>
+                <li><a href="meet-the-team.html">Meet the Team</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media-hub.html">Media Hub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Awards</h1>
+    </section>
+
+    <section class="intro-section">
+        <p>
+            FIRST Robotics, the FTC organization, awards both teams and individuals with various awards to recognize 
+            excellence in a specific aspect of the competition. Our team has been honored with numerous accolades 
+            throughout our journey.
+        </p>
+    </section>
+
+    <section>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="year-badge">2024/25</span>
+                    <h3 class="award-title">3rd Place Meet Ranking</h3>
+                    <p class="award-description">
+                        At the 2024-45 Northeast Edge League meet, Fire Robotics earned 3rd place in overall rankings. 
+                        On account of their outstanding robot performance and teamwork with their alliances they racked 
+                        up enough points to place third place.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="year-badge">2023/24</span>
+                    <h3 class="award-title">State-Qualifier Inspire</h3>
+                    <p class="award-description">
+                        Fire Robotics received first place for the Inspire Award at the 2023-24 North Jersey League Meet. 
+                        The team was awarded this honor on account of their outstanding portfolio and unique robot design. 
+                        The portfolio enhanced the countless hours put into the robot, making it a great season.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="year-badge">2022/23</span>
+                    <h3 class="award-title">State-Qualifier Motivate</h3>
+                    <p class="award-description">
+                        Fire Robotics won their third consecutive Motivate Award at the 2022-23 North Jersey League Meet, 
+                        once again allowing them to move on to the State Championship. The team was recognized for their 
+                        extensive STEM awareness events and their enthusiastic team spirit, as well as their newly formed 
+                        friendships with other teams.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="year-badge">2022/23</span>
+                    <h3 class="award-title">State-Qualifier Winning Alliance</h3>
+                    <p class="award-description">
+                        On top of winning the Inspire Award and Motivate Award, Fire Robotics was part of the winning 
+                        alliance at the 2022-23 North Jersey League Meet. They along with #18051 Robotic Llamas and 
+                        #10785 Highlanders were three of the select seven that moved on to States.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="year-badge">2022/23</span>
+                    <h3 class="award-title">State-Qualifier Inspire</h3>
+                    <p class="award-description">
+                        At the 2022-23 North Jersey League Meet, Fire Robotics won third place for the Inspire Award. 
+                        Receiving this top award was one of the three factors that brought Fire to the State Championship. 
+                        The team earned this award with their compelling engineering portfolio, innovative robot, and 
+                        inclusive outreaches in their community.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="year-badge">2021/22</span>
+                    <h3 class="award-title">Motivate</h3>
+                    <p class="award-description">
+                        The Motivate Award is awarded to teams who embrace the culture of FIRST and clearly show what it 
+                        means to be a team. This judged award celebrates the team that represents the essence of the FIRST 
+                        Tech Challenge competition. Fire robotics won the Motivate award for the second year in a row at 
+                        the 2020-21 North Jersey Meet.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="year-badge">2019/20</span>
+                    <h3 class="award-title">Motivate</h3>
+                    <p class="award-description">
+                        Fire Robotics won their first Motivate Award at the 2019-20 North Jersey League Meet, helping them 
+                        move onto the State championship. The team won this award off of their large media presence, 
+                        especially their youtube tutorials as well as their mentoring program, helping a rookie FLL team 
+                        make it to the New Jersey State Championship.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="year-badge">2018/19</span>
+                    <h3 class="award-title">Inspire</h3>
+                    <p class="award-description">
+                        FIRE Robotics won the top award, Inspire, judged award is given to the team that best embodies the 
+                        'challenge' of the FIRST Tech Challenge program. The team that receives this award is a strong 
+                        ambassador for FIRST programs and a role model FIRST team. Fire won the Inspire award while hosting 
+                        the 2018-19 North Jersey Meet at Livingston High School.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Fire Robotics - Livingston High School</p>
+        <div class="footer-links">
+            <a href="https://www.youtube.com/@FireRobotics" target="_blank">YouTube</a>
+            <a href="https://www.instagram.com/fire_robotics/?hl=en" target="_blank">Instagram</a>
+            <a href="https://www.tiktok.com/@fire_robotics" target="_blank">TikTok</a>
+        </div>
+    </footer>
+</body>
+</html>

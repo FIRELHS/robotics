@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Fire Robotics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ccc;
+            background: #000;
+        }
+
+        header {
+            background: #000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .event-card {
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-content h3 {
+            color: #ff6b35;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-content p {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .mentoring-section {
+            margin-top: 5rem;
+        }
+
+        .mentoring-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mentoring-card {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .mentoring-card:hover {
+            transform: scale(1.05);
+        }
+
+        .mentoring-card h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .mentoring-card p {
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mentoring-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="images/logo.avif" alt="Fire Robotics Logo">
+                </div>
+                <div class="site-title">Fire Robotics</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="team-structure.html">Team Structure</a></li>
+                <li><a href="meet-the-team.html">Meet the Team</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media-hub.html">Media Hub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Events</h1>
+    </section>
+
+    <section class="intro-section">
+        <p>
+            At Fire Robotics, we spread FTC values such as gracious professionalism, innovation, and teamwork to local 
+            communities. We inspire upcoming high schoolers to become pioneers in S.T.E.M. by engaging them in hands-on 
+            learning and creating a community to give them exposure and guidance. We gain experience and knowledge from 
+            mentors who are trained professionals in their respective fields of science and technology.
+        </p>
+    </section>
+
+    <section>
+        <h2 class="section-title">Outreach Events</h2>
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-sanskriti.avif" alt="Sanskriti Outreach">
+                </div>
+                <div class="event-content">
+                    <h3>Sanskriti Outreach</h3>
+                    <p>At a local teaching center, we gave an interactive S.T.E.M. experience to kids by doing fun activities including coding and building. We also informed parents about the benefits of high school robotics.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-coder-school.avif" alt="Coder School Outreach">
+                </div>
+                <div class="event-content">
+                    <h3>Coder School Outreach</h3>
+                    <p>At a local coder school, we gave upcoming 9th graders and their parents exposure to FTC and the high school robotics experience.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-india-workshop.avif" alt="India Robotics Workshop">
+                </div>
+                <div class="event-content">
+                    <h3>India Robotics Workshop</h3>
+                    <p>We held an online webinar with 60+ people who were interested in this opportunity. The team also worked together to send a member to India and teach in person to the students at the school.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-hour-of-code.avif" alt="Hour of Code">
+                </div>
+                <div class="event-content">
+                    <h3>Hour of Code</h3>
+                    <p>At a local elementary school, we gave an interactive S.T.E.M. experience to kids by doing fun activities including various coding opportunities. We also informed parents about the benefits of high school robotics.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-fll-midatlantic.avif" alt="FLL Mid Atlantic Meet">
+                </div>
+                <div class="event-content">
+                    <h3>FLL Mid Atlantic Meet</h3>
+                    <p>Our team was invited to the FLL Mid Atlantic Invitational Meet. We volunteered and helped run the event by setting up games, judging, and organizing teams.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-kickoff.avif" alt="Kickoff">
+                </div>
+                <div class="event-content">
+                    <h3>Kickoff</h3>
+                    <p>We invited all teams in our region to one big event where all the teams were introduced to this year's challenge.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-livingston-day.avif" alt="Livingston Day">
+                </div>
+                <div class="event-content">
+                    <h3>Livingston Day</h3>
+                    <p>A town-wide event where we held a robot demonstration and talked to the town about Livingston High School robotics.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-mental-wellness.avif" alt="Mental Wellness Fair">
+                </div>
+                <div class="event-content">
+                    <h3>Shiv's Third Eye Mental Wellness Fair</h3>
+                    <p>A town-wide event where we talked about the mental health benefits of doing robotics and being part of a team. At Fire robotics, we prioritize our members and create a safe and friendly environment.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-trash-pickup.avif" alt="Trash Pickup">
+                </div>
+                <div class="event-content">
+                    <h3>Trash Pickup</h3>
+                    <p>A group of members from our team went to a local highway to assist our school's Key Club. We picked up over 50 pounds of trash.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-westem.avif" alt="WESTEM Fundraiser">
+                </div>
+                <div class="event-content">
+                    <h3>WESTEM Fundraiser</h3>
+                    <p>We partnered with the Women in Entrepreneurship and STEM Club and Anthony Franco's, one of our sponsors, for this fundraiser.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-board-ed.avif" alt="Board of Education">
+                </div>
+                <div class="event-content">
+                    <h3>Board of Education</h3>
+                    <p>We presented our team and accomplishments to the board. Our aim was to help the board understand what we have done with their help and to continue this in the future.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-town-council.avif" alt="Town Council">
+                </div>
+                <div class="event-content">
+                    <h3>Town Council</h3>
+                    <p>We talked to the Town Council and Mayor on Live TV. We informed them about accomplishments and future plans and thanked them for all their support.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-egypt.avif" alt="Egypt">
+                </div>
+                <div class="event-content">
+                    <h3>Egypt</h3>
+                    <p>We worked with the Rotary Club in Egypt to raise $1900+ to help build up a STEM program in an Egyptian school.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-chinese-community.avif" alt="Chinese Community Day">
+                </div>
+                <div class="event-content">
+                    <h3>Chinese Community Day</h3>
+                    <p>We taught 3 classes of children how to extend past elementary robotics.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-stem-day.avif" alt="STEM Day">
+                </div>
+                <div class="event-content">
+                    <h3>STEM Day</h3>
+                    <p>During this independently organized event we connected the community to STEM learning opportunities available in town. We had 100+ people attend and we raised over $200+.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-vex-iq.avif" alt="VEX IQ Qualifier">
+                </div>
+                <div class="event-content">
+                    <h3>VEX IQ Qualifier</h3>
+                    <p>We refereed, helped host, set up, and clean up this event.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-namaste.avif" alt="Namaste School">
+                </div>
+                <div class="event-content">
+                    <h3>Namaste School</h3>
+                    <p>We taught an interactive physics activity to over 30 children.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-lacd.avif" alt="LACD">
+                </div>
+                <div class="event-content">
+                    <h3>LACD</h3>
+                    <p>We gave a presentation to over 30 members about robotics and our team.</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="images/event-genius-gems.avif" alt="Genius Gems">
+                </div>
+                <div class="event-content">
+                    <h3>Genius Gems</h3>
+                    <p>We taught a lesson at a robotics class with over 15 people and had an interactive Robot demonstration and activity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mentoring-section">
+        <h2 class="section-title">Mentoring</h2>
+        <div class="mentoring-grid">
+            <div class="mentoring-card">
+                <h3>Team Jolly Blue (FTC)</h3>
+                <p>We helped Team Jolly Blue with their PID controller for Swivel Drivetrain over Zoom.</p>
+            </div>
+
+            <div class="mentoring-card">
+                <h3>Team Alpha (FLL)</h3>
+                <p>We helped Team Alpha by teaching them the different processes required to build, such as the iterative process and the design cycle.</p>
+            </div>
+
+            <div class="mentoring-card">
+                <h3>Team Mega Mindstorms (FLL)</h3>
+                <p>We helped Team Mega Mindstorms by teaching them the nuances of the competition, such as point density and primary vs secondary handlers.</p>
+            </div>
+
+            <div class="mentoring-card">
+                <h3>Team Cyber Cerberus (FLL)</h3>
+                <p>We helped Team Cyber Cerberus develop their game strategy, handle their robot, and helped them improve their innovation project.</p>
+            </div>
+
+            <div class="mentoring-card">
+                <h3>Team Metallic Manipulators (FLL)</h3>
+                <p>We helped Team Metallic Manipulators with game strategy by teaching them the importance of teamwork and cooperation.</p>
+            </div>
+
+            <div class="mentoring-card">
+                <h3>Team Roborockers (FLL)</h3>
+                <p>We helped Team Roborockers by giving constructive criticism to enhance their presentation so that they could speak clearly and effectively.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Fire Robotics - Livingston High School</p>
+        <div class="footer-links">
+            <a href="https://www.youtube.com/@FireRobotics" target="_blank">YouTube</a>
+            <a href="https://www.instagram.com/fire_robotics/?hl=en" target="_blank">Instagram</a>
+            <a href="https://www.tiktok.com/@fire_robotics" target="_blank">TikTok</a>
+        </div>
+    </footer>
+</body>
+</html>

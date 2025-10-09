@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Hub | Fire Robotics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ccc;
+            background: #000;
+        }
+
+        header {
+            background: #000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .media-card {
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+
+        .media-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .media-icon-container {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .media-icon-container img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .media-content {
+            padding: 2rem;
+        }
+
+        .media-content h3 {
+            color: #ff6b35;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .media-content p {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .media-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .media-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .stem-talk-section {
+            margin-top: 5rem;
+            background: #111;
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .stem-talk-section h2 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stem-talk-section p {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .stem-talk-logo {
+            width: 300px;
+            height: 150px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            margin: 2rem auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .stem-talk-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 20px;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stem-talk-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="images/logo.avif" alt="Fire Robotics Logo">
+                </div>
+                <div class="site-title">Fire Robotics</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="team-structure.html">Team Structure</a></li>
+                <li><a href="meet-the-team.html">Meet the Team</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media-hub.html">Media Hub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Media Hub</h1>
+    </section>
+
+    <section class="intro-section">
+        <p>
+            Fire robotics puts an emphasis on our online presence through our media subteam. We produce all of our 
+            content to a professional standard. Our end goal is to spread awareness about S.T.E.M. and robotics 
+            while maintaining a creative and fun environment.
+        </p>
+    </section>
+
+    <section>
+        <div class="media-grid">
+            <div class="media-card">
+                <div class="media-icon-container">
+                    <img src="images/media-youtube.avif" alt="YouTube Logo">
+                </div>
+                <div class="media-content">
+                    <h3>YouTube</h3>
+                    <p>At Fire, we create original weekly YouTube content. This consists of S.T.E.M. Talk, vlogs, and how-to videos. You can find us on YouTube at Fire Robotics or click the link below.</p>
+                    <a href="https://www.youtube.com/@FireRobotics" target="_blank" class="media-btn">Visit Our Channel</a>
+                </div>
+            </div>
+
+            <div class="media-card">
+                <div class="media-icon-container">
+                    <img src="images/media-instagram.avif" alt="Instagram Logo">
+                </div>
+                <div class="media-content">
+                    <h3>Instagram</h3>
+                    <p>Our Instagram is our initial platform to reach our target audience. We post weekly fun and interesting content on our team and events. You can find us at fire_robotics or by clicking the link below.</p>
+                    <a href="https://www.instagram.com/fire_robotics/?hl=en" target="_blank" class="media-btn">Follow Us</a>
+                </div>
+            </div>
+
+            <div class="media-card">
+                <div class="media-icon-container">
+                    <img src="images/media-tiktok.avif" alt="TikTok Logo">
+                </div>
+                <div class="media-content">
+                    <h3>TikTok</h3>
+                    <p>Our TikTok allows us to make short content to keep our community informed on all of our progress. Follow us

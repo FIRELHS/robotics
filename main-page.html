@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Robotics | Livingston High School FTC Team</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #000;
+        }
+
+        header {
+            background: #000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #ccc;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .about-section {
+            background: #000;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .ftc-section {
+            background: #f9f9f9;
+        }
+
+        .ftc-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .ftc-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .stats-section {
+            background: #000;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .media-section {
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .media-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .media-icon {
+            width: 150px;
+            height: 150px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content,
+            .ftc-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo-container">
+            <div class="logo">
+                <!-- Replace with your actual logo file path -->
+                <img src="images/logo.avif" alt="Fire Robotics Logo">
+            </div>
+            <div class="site-title">Fire Robotics</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#ftc">FTC</a></li>
+            <li><a href="#stats">Stats</a></li>
+            <li><a href="#media">Media</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <h1>Fire Robotics</h1>
+    <p>Livingston High School FTC Team</p>
+</section>
+
+<section id="about" class="about-section">
+    <h2 class="section-title">Who are we?</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <p class="section-subtitle" style="text-align: left;">
+                Fire Robotics is a Livingston High School team that participates in the First Tech Challenge (FTC).
+                At Fire Robotics, we work together to develop new skills and innovate solutions that help us improve as a team.
+                We spread FIRST values and the importance of S.T.E.M. We believe in inclusion, gracious professionalism, and positivity.
+            </p>
+        </div>
+        <div class="image-placeholder">
+            <img src="images/picture1.avif" alt="Team Photo 1" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </div>
+    <div class="about-content" style="margin-top: 2rem;">
+        <div class="image-placeholder">
+            <img src="images/picture2.avif" alt="Team Photo 2" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="image-placeholder">
+            <img src="images/picture3.avif" alt="Team Photo 3" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </div>
+</section>
+
+<section id="ftc" class="ftc-section">
+    <h2 class="section-title">What is the First Tech Challenge?</h2>
+    <div class="ftc-content">
+        <div class="image-placeholder">
+            <img src="images/picture4.avif" alt="Robot Photo" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="ftc-text">
+            <p>
+                The First Tech Challenge is an international competition dedicated to bringing robotics to high schools.
+                Every year there is a new problem to solve. Each team must design and fabricate an efficient robot to fulfill
+                complicated and precise tasks.
+            </p>
+            <p>
+                Inside FTC, there are different competitions. At the lowest level, there are local meets. This is where we
+                compete against local schools in our immediate area throughout the season. This allows teams to see how viable
+                their designs are, in addition to taking inspiration from other teams. After 2-4 meets per team, there are
+                Leagues/Qualifying Tournaments, where the top teams move on to the state's competition.
+            </p>
+            <p>
+                At states, teams compete against the best and brightest from across the states. Then, if a team gets past
+                states they go on to Worlds, where the best teams from around the globe travel to Houston, and compete for
+                the grandest title.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="stats" class="stats-section">
+    <h2 class="section-title">We Take Pride in Our Numbers</h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">28,500+</div>
+            <div class="stat-label">YouTube Views</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">600+</div>
+            <div class="stat-label">Hours of 3D Printing</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">80+</div>
+            <div class="stat-label">Unique 3D-Printed Parts</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">190+</div>
+            <div class="stat-label">Design Iterations</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">1,000+</div>
+            <div class="stat-label">TikTok Views</div>
+        </div>
+    </div>
+</section>
+
+<section id="media" class="media-section">
+    <div class="media-content">
+        <div class="media-icon">📱</div>
+        <p class="section-subtitle">
+            At Fire Robotics, we are extremely proud of our online media presence. We have YouTube videos that garner
+            several thousand views and Instagram posts recording our team's progress. On our Youtube Channel, you can
+            find original videos including, How-To videos, vlogs, and our own local TV show, S.T.E.M. Talk.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Fire Robotics - Livingston High School</p>
+    <div class="footer-links">
+        <a href="https://www.youtube.com/@FireRobotics" target="_blank">YouTube</a>
+        <a href="https://www.instagram.com/fire_robotics/?hl=en" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@fire_robotics" target="_blank">TikTok</a>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
