@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build | Fire Robotics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ccc;
+            background: #000;
+        }
+
+        header {
+            background: #000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('images/hero-build.avif');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .description-section {
+            background: #111;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .description-section h2 {
+            color: #ff6b35;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .description-section p {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .carousel-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-item {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .carousel {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="images/logo.avif" alt="Fire Robotics Logo">
+                </div>
+                <div class="site-title">Fire Robotics</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="team-structure.html">Team Structure</a></li>
+                <li><a href="meet-the-team.html">Meet the Team</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media-hub.html">Media Hub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Build</h1>
+    </section>
+
+    <section class="intro-section">
+        <p>
+            The Build team constructs the robot based on robot iterations made by the CAD team and design-oriented 
+            discussions with the rest of the team. They are responsible for building an efficient and innovative 
+            robot that can effectively complete the goal of the FTC game.
+        </p>
+    </section>
+
+    <section class="description-section">
+        <h2>Working with CAD to Solve the Challenge</h2>
+        <p>
+            [Description of how the Build team collaborates with CAD - Explain how we take CAD designs and turn them into reality, the iterative process between design and fabrication, how we test and refine builds, and the systems we create to accomplish the game objectives. Describe the tools, materials, and techniques used in construction.]
+        </p>
+    </section>
+
+    <section class="carousel-section">
+        <h2 class="section-title">Building in Action</h2>
+        <div class="carousel">
+            <div class="carousel-item">
+                <img src="images/build-photo-1.avif" alt="Build Team Photo 1">
+            </div>
+            <div class="carousel-item">
+                <img src="images/build-photo-2.avif" alt="Build Team Photo 2">
+            </div>
+            <div class="carousel-item">
+                <img src="images/build-photo-3.avif" alt="Build Team Photo 3">
+            </div>
+            <div class="carousel-item">
+                <img src="images/build-photo-4.avif" alt="Build Team Photo 4">
+            </div>
+            <div class="carousel-item">
+                <img src="images/build-photo-5.avif" alt="Build Team Photo 5">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Fire Robotics - Livingston High School</p>
+        <div class="footer-links">
+            <a href="https://www.youtube.com/@FireRobotics" target="_blank">YouTube</a>
+            <a href="https://www.instagram.com/fire_robotics/?hl=en" target="_blank">Instagram</a>
+            <a href="https://www.tiktok.com/@fire_robotics" target="_blank">TikTok</a>
+        </div>
+    </footer>
+</body>
+</html>
