@@ -130,6 +130,7 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 3rem;
             margin: 3rem 0;
+            justify-items: center;
         }
 
         .tech-card {
@@ -138,6 +139,8 @@
             padding: 2.5rem;
             box-shadow: 0 5px 20px rgba(255,255,255,0.1);
             transition: transform 0.3s;
+            width: 100%;
+            max-width: 500px;
         }
 
         .tech-card:hover {
@@ -165,6 +168,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            justify-items: center;
         }
 
         .screenshot {
@@ -172,6 +176,8 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+            width: 100%;
+            max-width: 500px;
         }
 
         .screenshot img {
@@ -185,10 +191,12 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin: 3rem 0;
+            justify-items: center;
         }
 
         .team-photo {
             width: 100%;
+            max-width: 500px;
             height: 400px;
             background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             border-radius: 15px;
@@ -286,12 +294,12 @@
         <div class="tech-grid">
             <div class="tech-card">
                 <h3>RoadRunner</h3>
-                <p>[Road Runner is a motion planning library, written for the FTC robotics competition. Designed primarily for autonomous robotic movement, it allows for complex path following and generation while maintaining control of velocity and acceleration. This enables bots to have more accurate and advanced path following capabilities.]</p>
+                <p>[Description of RoadRunner - Explain what it is, how it's used for autonomous pathing, and why it's important for robot navigation and control.]</p>
             </div>
 
             <div class="tech-card">
                 <h3>PedroPathing</h3>
-                <p>[Unlike conventional pathing systems such as RoadRunner, Pedro Pathing leverages Bézier curve generation to produce smoother, faster, and more efficient trajectories. Its primary focus is on enhancing the adaptability of robots during autonomous operation by reacting dynamically to environmental changes, reducing error margins, and ensuring optimal path execution.]</p>
+                <p>[Description of PedroPathing - Explain what it is, how it enhances our autonomous capabilities, and its advantages for precise robot movement.]</p>
             </div>
         </div>
     </section>
